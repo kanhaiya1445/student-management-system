@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management System</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div>
+    <span class="eyebrow">STUDENT PORTAL</span>
+    <h1>🎓 Student Management System</h1>
+    <p>Manage student records with search, CRUD operations and dashboard analytics.</p>
+  </div>
+  <button id="logoutBtn" class="btn danger hidden">Logout</button>
+</header>
+
+<section id="authSection" class="auth-grid">
+  <div class="card">
+    <h2>Create Account</h2>
+    <p class="muted">Create a user account for your own student records.</p>
+    <form id="registerForm">
+      <input id="regName" placeholder="Full name" required>
+      <input id="regEmail" type="email" placeholder="Email" required>
+      <input id="regPassword" type="password" minlength="6" placeholder="Password (6+ chars)" required>
+      <button class="btn primary">Register</button>
+    </form>
+  </div>
+  <div class="card">
+    <h2>Login</h2>
+    <p class="muted">Access your saved student records.</p>
+    <form id="loginForm">
+      <input id="loginEmail" type="email" placeholder="Email" required>
+      <input id="loginPassword" type="password" placeholder="Password" required>
+      <button class="btn primary">Login</button>
+    </form>
+  </div>
+</section>
+
+<section id="dashboard" class="hidden">
+  <div id="stats" class="stats"></div>
+
+  <div class="main-grid">
+    <div class="card">
+      <div class="section-head"><div><h2 id="formTitle">Add Student</h2><p class="muted">Create or update a student record.</p></div></div>
+      <form id="studentForm" class="form-grid">
+        <input type="hidden" id="studentId">
+        <input id="name" placeholder="Student name" required>
+        <input id="rollNo" placeholder="Roll number" required>
+        <select id="course" required>
+          <option value="">Select course</option><option>BCA</option><option>BBA</option><option>B.Sc</option><option>B.Tech</option><option>MCA</option><option>Other</option>
+        </select>
+        <select id="semester" required>
+          <option value="">Semester</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option>
+        </select>
+        <input id="email" type="email" placeholder="Student email" required>
+        <input id="marks" type="number" min="0" max="100" placeholder="Marks (0-100)" required>
+        <div class="form-actions">
+          <button class="btn primary" id="saveBtn">Add Student</button>
+          <button type="button" class="btn secondary hidden" id="cancelEdit">Cancel Edit</button>
+        </div>
+      </form>
+      <p id="studentMessage" class="message"></p>
+    </div>
+
+    <div class="card">
+      <div class="section-head">
+        <div><h2>Student Records</h2><p class="muted">Search and manage your records.</p></div>
+      </div>
+      <input id="search" placeholder="🔍 Search by name, roll number or course">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Roll</th><th>Course</th><th>Sem</th><th>Marks</th><th>Grade</th><th>Actions</th></tr></thead>
+          <tbody id="studentTable"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="toast" class="toast"></div>
+<footer>CREATED BY ER. KANHAIYA KR</footer>
+</div>
+<script src="js/app.js"></script>
+</body>
+</html>

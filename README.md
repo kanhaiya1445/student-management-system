@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Student Management System — Full Stack
 
 ## What is included
@@ -48,3 +49,7 @@ localStorage.setItem("sms-api-base","http://localhost:5000/api")
 - JWT protects student API routes.
 - Each logged-in user can access only their own students.
 - This is suitable for learning/local development. Production deployment should add stricter CORS, HTTPS, rate limiting, refresh-token strategy, stronger validation, and secure secret management.
+=======
+# student-management-system
+this is my  git repository
+>>>>>>> 5d711ff4205579375c13df8a88377be36f9e1331

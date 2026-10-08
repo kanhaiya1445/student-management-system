@@ -1,0 +1,17 @@
+import express from "express";
+import cors from "cors";
+import helmet from "helmet";
+import dotenv from "dotenv";
+import authRoutes from "./routes/auth.routes.js";
+import studentRoutes from "./routes/student.routes.js";
+import {testDb} from "./config/db.js";
+dotenv.config();
+const app=express();
+app.use(helmet());
+app.use(cors({origin:true}));
+app.use(express.json({limit:"1mb"}));
+app.get("/api/health",async(req,res)=>{try{await testDb();res.json({ok:true,database:"connected"})}catch(e){res.status(500).json({ok:false,database:"disconnected",message:e.message})}});
+app.use("/api/auth",authRoutes);
+app.use("/api/students",studentRoutes);
+const PORT=Number(process.env.PORT||5000);
+app.listen(PORT,async()=>{console.log(`Student Management backend running on http://localhost:${PORT}`);try{await testDb();console.log("MySQL connected successfully")}catch(e){console.error("MySQL connection failed:",e.message)}});

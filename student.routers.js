@@ -1,0 +1,1 @@
+import {Router} from "express";import {list,create,update,remove} from "../controllers/student.controller.js";import {auth} from "../middleware/auth.js";const router=Router();router.use(auth);router.get("/",list);router.post("/",create);router.put("/:id",update);router.delete("/:id",remove);export default router;
