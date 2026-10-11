@@ -1,4 +1,4 @@
-const API=localStorage.getItem("sms-api-base")||"http://localhost:5000/api";
+const API_BASE_URL = "https://student-management-system-1-r96b.onrender.com/api";
 const $=id=>document.getElementById(id);
 let students=[];
 
