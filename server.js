@@ -8,7 +8,11 @@ import {testDb} from "./config/db.js";
 dotenv.config();
 const app=express();
 app.use(helmet());
-app.use(cors({origin:true}));
+app.use(cors({
+  origin: "https://student-management-system-2-6v5t.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json({limit:"1mb"}));
 app.get("/api/health",async(req,res)=>{try{await testDb();res.json({ok:true,database:"connected"})}catch(e){res.status(500).json({ok:false,database:"disconnected",message:e.message})}});
 app.use("/api/auth",authRoutes);
