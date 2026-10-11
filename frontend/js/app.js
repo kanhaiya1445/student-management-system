@@ -8,7 +8,7 @@ function toast(msg){const t=$("toast");t.textContent=msg;t.style.display="block"
 function authHeaders(){return {"Content-Type":"application/json","Authorization":`Bearer ${token()}`}}
 
 async function api(path,options={}){
-  const res=await fetch(API+path,options);
+ const res = await fetch(API_BASE_URL + path, options);
   const data=await res.json().catch(()=>({message:"Invalid server response"}));
   if(!res.ok) throw new Error(data.message||"Request failed");
   return data;
